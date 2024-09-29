@@ -34,16 +34,20 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             close = new Button();
             cancel = new Button();
-            button3 = new Button();
+            changeLineColor = new Button();
             dest = new Button();
             classsf = new Button();
+            Line = new PictureBox();
+            TrainWindow = new PictureBox();
             colorDialog1 = new ColorDialog();
             openclassific = new OpenFileDialog();
-            opendestinatiom = new OpenFileDialog();
+            opendestination = new OpenFileDialog();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)classification).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destination).BeginInit();
             flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Line).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TrainWindow).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -56,6 +60,8 @@
             tableLayoutPanel1.Controls.Add(classification, 1, 1);
             tableLayoutPanel1.Controls.Add(destination, 2, 1);
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 3);
+            tableLayoutPanel1.Controls.Add(Line, 0, 0);
+            tableLayoutPanel1.Controls.Add(TrainWindow, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -64,6 +70,8 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -90,7 +98,7 @@
             tableLayoutPanel1.SetColumnSpan(flowLayoutPanel1, 2);
             flowLayoutPanel1.Controls.Add(close);
             flowLayoutPanel1.Controls.Add(cancel);
-            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Controls.Add(changeLineColor);
             flowLayoutPanel1.Controls.Add(dest);
             flowLayoutPanel1.Controls.Add(classsf);
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
@@ -101,66 +109,103 @@
             // 
             // close
             // 
+            close.AutoSize = true;
             close.Location = new Point(618, 3);
             close.Name = "close";
-            close.Size = new Size(93, 23);
+            close.Size = new Size(93, 25);
             close.TabIndex = 0;
             close.Text = "閉じる";
             close.UseVisualStyleBackColor = true;
+            close.Click += close_Click;
             // 
             // cancel
             // 
+            cancel.AutoSize = true;
             cancel.Location = new Point(519, 3);
             cancel.Name = "cancel";
-            cancel.Size = new Size(93, 23);
+            cancel.Size = new Size(93, 25);
             cancel.TabIndex = 1;
             cancel.Text = "表示取消";
             cancel.UseVisualStyleBackColor = true;
+            cancel.Click += cancel_Click;
             // 
-            // button3
+            // changeLineColor
             // 
-            button3.Location = new Point(420, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(93, 23);
-            button3.TabIndex = 2;
-            button3.Text = "背景色変更";
-            button3.UseVisualStyleBackColor = true;
+            changeLineColor.AutoSize = true;
+            changeLineColor.Location = new Point(420, 3);
+            changeLineColor.Name = "changeLineColor";
+            changeLineColor.Size = new Size(93, 25);
+            changeLineColor.TabIndex = 2;
+            changeLineColor.Text = "帯色変更";
+            changeLineColor.UseVisualStyleBackColor = true;
+            changeLineColor.Click += changeLineColor_Click;
             // 
             // dest
             // 
+            dest.AutoSize = true;
             dest.Location = new Point(321, 3);
             dest.Name = "dest";
-            dest.Size = new Size(93, 23);
+            dest.Size = new Size(93, 25);
             dest.TabIndex = 3;
             dest.Text = "行先表示";
             dest.UseVisualStyleBackColor = true;
+            dest.Click += dest_Click;
             // 
             // classsf
             // 
+            classsf.AutoSize = true;
             classsf.Location = new Point(222, 3);
             classsf.Name = "classsf";
-            classsf.Size = new Size(93, 23);
+            classsf.Size = new Size(93, 25);
             classsf.TabIndex = 4;
             classsf.Text = "種別表示";
             classsf.TextImageRelation = TextImageRelation.ImageAboveText;
             classsf.UseVisualStyleBackColor = true;
+            classsf.Click += classsf_Click;
+            // 
+            // Line
+            // 
+            Line.BackColor = Color.FromArgb(128, 255, 128);
+            tableLayoutPanel1.SetColumnSpan(Line, 4);
+            Line.Dock = DockStyle.Top;
+            Line.Location = new Point(3, 3);
+            Line.Name = "Line";
+            Line.Size = new Size(794, 32);
+            Line.TabIndex = 3;
+            Line.TabStop = false;
+            // 
+            // TrainWindow
+            // 
+            TrainWindow.BackColor = Color.PowderBlue;
+            tableLayoutPanel1.SetColumnSpan(TrainWindow, 2);
+            TrainWindow.Dock = DockStyle.Bottom;
+            TrainWindow.Location = new Point(43, 212);
+            TrainWindow.Name = "TrainWindow";
+            TrainWindow.Size = new Size(714, 190);
+            TrainWindow.TabIndex = 4;
+            TrainWindow.TabStop = false;
             // 
             // openclassific
             // 
             openclassific.FileName = "openFileDialog1";
             openclassific.Filter = "JPEG Files(*.jpg)|*.jpg|All files(*.*)|*.*";
-            openclassific.InitialDirectory = "./classification";
+            openclassific.InitialDirectory = "\\TrainDestination\\classification";
+            openclassific.Title = "種別選択";
             // 
-            // opendestinatiom
+            // opendestination
             // 
-            opendestinatiom.FileName = "openFileDialog1";
-            opendestinatiom.Filter = "JPEG Files(*.jpg)|*.jpg|All files(*.*)|*.*";
-            opendestinatiom.InitialDirectory = "./desination";
+            opendestination.FileName = "openFileDialog1";
+            opendestination.Filter = "JPEG Files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            opendestination.InitialDirectory = "\\TrainDestination\\TrainDestination\\destination";
+            opendestination.Title = "行先選択";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            BackColor = SystemColors.Control;
+            CancelButton = close;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
             Name = "Form1";
@@ -169,6 +214,9 @@
             ((System.ComponentModel.ISupportInitialize)classification).EndInit();
             ((System.ComponentModel.ISupportInitialize)destination).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Line).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TrainWindow).EndInit();
             ResumeLayout(false);
         }
 
@@ -180,11 +228,13 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button close;
         private Button cancel;
-        private Button button3;
+        private Button changeLineColor;
         private Button dest;
         private Button classsf;
         private ColorDialog colorDialog1;
         private OpenFileDialog openclassific;
-        private OpenFileDialog opendestinatiom;
+        private OpenFileDialog opendestination;
+        private PictureBox Line;
+        private PictureBox TrainWindow;
     }
 }
