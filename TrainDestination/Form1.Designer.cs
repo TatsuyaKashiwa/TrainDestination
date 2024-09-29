@@ -37,6 +37,9 @@
             button3 = new Button();
             dest = new Button();
             classsf = new Button();
+            colorDialog1 = new ColorDialog();
+            openclassific = new OpenFileDialog();
+            opendestinatiom = new OpenFileDialog();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)classification).BeginInit();
             ((System.ComponentModel.ISupportInitialize)destination).BeginInit();
@@ -142,6 +145,18 @@
             classsf.TextImageRelation = TextImageRelation.ImageAboveText;
             classsf.UseVisualStyleBackColor = true;
             // 
+            // openclassific
+            // 
+            openclassific.FileName = "openFileDialog1";
+            openclassific.Filter = "JPEG Files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            openclassific.InitialDirectory = "./classification";
+            // 
+            // opendestinatiom
+            // 
+            opendestinatiom.FileName = "openFileDialog1";
+            opendestinatiom.Filter = "JPEG Files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            opendestinatiom.InitialDirectory = "./desination";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -168,5 +183,8 @@
         private Button button3;
         private Button dest;
         private Button classsf;
+        private ColorDialog colorDialog1;
+        private OpenFileDialog openclassific;
+        private OpenFileDialog opendestinatiom;
     }
 }
